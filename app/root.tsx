@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-
+import "./bootstrap.css"
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -29,13 +29,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <Meta />
         <Links />
       </head>
       <body>
+        <div className="navbar navbar-expand-lg bg-body-secondary">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">EMS</a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link" href="/employees">Employees</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/timesheets">Timesheets</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         {children}
         <ScrollRestoration />
         <Scripts />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" ></script>
       </body>
     </html>
   );
